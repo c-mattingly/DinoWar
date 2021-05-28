@@ -1,0 +1,140 @@
+* {
+    box-sizing: border-box;
+  }
+body {
+    height: 100vh;
+    max-width:390px;
+    margin: 0;
+    background-image: url("/Users/mikemattingly/code/DinoWar/images/background.png");
+    background-color:cadetblue;
+    color:#BC0C0C;
+    text-shadow: 0px 0px 1px black, 0px 0px 1px black, 0px 0px 1px black, 0px 0px 1px black,
+    0px 0px 1px black, 0px 0px 1px black;
+}
+
+header {
+    background: rgba(0,0,0,0.7);
+    margin: 0;
+    height: 100px;
+}
+
+#dino {
+    width: 350px;
+    height: 100px;
+    align-content: center;
+
+}
+
+.container {
+    max-width:390px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+h3 {
+    background: rgba(0,0,0,0.25);
+}
+
+.compCardDiv {
+    order: 1;
+    text-align: center;
+    width: 100%;
+    margin-left:260px;
+    margin-right:5px;
+}
+
+.card {
+    height: 165px;
+    width: 114px;
+    border: 2px solid black;
+    background: rgba(255,255,255,0.25)
+
+}
+
+#compFaceUp {
+    order: 2;
+    margin-left:45px;
+}
+
+#compFaceDown {
+    order: 3;
+    margin-left:72px;
+}
+
+.display {
+    order: 4;
+    background: rgba(0,0,0,0.25);
+    width:100%;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#playerFaceDown {
+    order: 5;
+    margin-left:45px;
+}
+
+#playerFaceUp {
+    order: 6;
+    margin-left:72px;
+}
+
+.playerCardDiv{
+    order: 7;
+    width: 100%;
+    margin-left: 5px;
+    margin-right: 260px;
+}
+
+button {
+    background-color: black; 
+    color: #BC0C0C;
+    border: 1px solid #555555;
+}
+
+button:hover {
+    background: rgba(0,0,0,0);
+    color: black; 
+    border: 1px solid black;
+}
+
+.buttonDiv {
+    order: 8;
+    width: 100%;
+    justify-content: center;
+}
+
+#draw {
+   
+    width: 98px;
+    height: 36px;
+    border-radius: 24px;
+    font-size: 25px;
+    margin-left: 146px;
+    
+    
+}
+
+#new {
+    
+    width: 122px;
+    height: 26px;
+    border-radius: 11px;
+    font-size: 15px;
+    margin-top: 28px;
+    margin-left: 134px;
+    
+    
+}
+
+
+/* 2532x1170 pixels at 460ppi */
+@media only screen 
+    and (device-width: 390px) 
+    and (device-height: 844px) 
+    and (-webkit-device-pixel-ratio: 3) { }
+
+
+    }
