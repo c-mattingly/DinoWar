@@ -3,24 +3,53 @@ const deck = ["dA", "dK", "dQ", "dJ", "d10", "d09", "d08", "d07", "d06", "d05", 
 
 /*----- app's state (variables) -----*/
 
+// respective decks for player and computer
 const pile = {
-    player = [],
-    comp = []
+    player: [],
+    comp: []
 };
-
-const cardsLeft = {
-    player = [],
-    comp = []
-};
-
 const discardPile = {
-    player = [],
-    comp = []
+    player: [],
+    comp: []
 };
+// total number of cards in pile(deck) and discard pile for player 
+const cardsLeft = {
+    player: pile.player + discardPile.player,
+    comp: pile.comp + discardPile.comp
+};
+const currCard = "";
+
+const message = "";
 
 /*----- cached element references -----*/
 
+// Cards Left elements
+const crd = {
+    countComp: document.getElementById("compcount").innerText,
+    countPlayer: document.getElementById("playercount").innerText
+};
+// Card display elements
+const crdDisplay = {
+    comp: {up: document.getElementById("imgUpComp"), 
+            down: document.getElementById("imgDownComp")},
+    player: {up: document.getElementById("imgUpPlayer"),
+            down: document.getElementById("imgDownPlayer")}
+};
+// Div element to allow to adjust for the transparency the playing cards have
+const crdOpacity = {
+    comp: {up: document.getElementById("compFaceUp"),
+            down: document.getElementById("compFaceDown")},
+    player: {up: document.getElementById("playerFaceUp"),
+            down: document.getElementById("playerFaceDown")}
+}
 
+// list of code going to use for visibility of cards within functions.          
+crdDisplay.comp.up.src = "images/clubs/clubs-r02.svg";
+crdDisplay.comp.up.style.visibility = "visible";
+console.log(crdOpacity);
+crdOpacity.comp.up.style.background = "rgba(255,255,255,1)";
+console.log(crdDisplay.comp.up);
+console.log(crdDisplay.comp.down);
 /*----- event listeners -----*/
 
 // Going to need Event Listener for Draw Button

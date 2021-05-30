@@ -24,18 +24,15 @@ header {
     align-content: center;
 
 }
-
 .container {
     max-width:390px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
-
 h3 {
     background: rgba(0,0,0,0.25);
 }
-
 .compCardDiv {
     order: 1;
     text-align: center;
@@ -43,25 +40,23 @@ h3 {
     margin-left:260px;
     margin-right:5px;
 }
-
 .crd {
     height: 165px;
     width: 114px;
     border: 2px solid black;
-    background: rgba(255,255,255,0.25)
+    
 
 }
-
 #compFaceUp {
     order: 2;
     margin-left:45px;
+    background: rgba(255,255,255,0.25)
 }
-
 #compFaceDown {
     order: 3;
     margin-left:72px;
+    background: rgba(255,255,255,1)
 }
-
 .display {
     order: 4;
     background: rgba(0,0,0,0.25);
@@ -70,24 +65,50 @@ h3 {
     margin-top: 20px;
     margin-bottom: 20px;
 }
-
 #playerFaceDown {
     order: 5;
     margin-left:45px;
+    background: rgba(255,255,255,1)
 }
-
 #playerFaceUp {
     order: 6;
     margin-left:72px;
+    background: rgba(255,255,255,0.25)
 }
-
 .playerCardDiv{
     order: 7;
     width: 100%;
     margin-left: 5px;
     margin-right: 260px;
 }
+div img {
+    height: 174px;
+    width: 124px;
+    margin-top: -6px;
+    margin-left: -6px;
+}
+.upsideDwn {
+    transform: scale(-1, -1);
+}
 
+#imgUpComp {
+    visibility: hidden;
+}
+#imgDownComp {
+    visibility: visible;
+}
+#imgDownPlayer {
+    visibility: visible;
+}
+#imgUpPlayer {
+    visibility: hidden;
+}
+#imgUpComp, #imgUpPlayer {
+    height: 174px;
+    width: 110px;
+    margin-top: -6px;
+    margin-left: 0px;
+}
 button {
     background-color: black; 
     color: #BC0C0C;
