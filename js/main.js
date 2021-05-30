@@ -23,7 +23,7 @@ const message = "";
 
 /*----- cached element references -----*/
 
-// Cards Left elements
+// Cards left counts
 const crd = {
     countComp: document.getElementById("compcount").innerText,
     countPlayer: document.getElementById("playercount").innerText
@@ -35,30 +35,70 @@ const crdDisplay = {
     player: {up: document.getElementById("imgUpPlayer"),
             down: document.getElementById("imgDownPlayer")}
 };
-// Div element to allow to adjust for the transparency the playing cards have
+// Allows to adjust for the transparency when there are cards displayed or not
 const crdOpacity = {
     comp: {up: document.getElementById("compFaceUp"),
             down: document.getElementById("compFaceDown")},
     player: {up: document.getElementById("playerFaceUp"),
             down: document.getElementById("playerFaceDown")}
-}
+};
+// Display for messages to player
+const display = document.getElementById("displayH1");
+// Draw button
+const draw = document.getElementById("draw");
+// New game button
+const newGameBtn = document.getElementById("new");
+
 
 // list of code going to use for visibility of cards within functions.          
-crdDisplay.comp.up.src = "images/clubs/clubs-r02.svg";
-crdDisplay.comp.up.style.visibility = "visible";
-console.log(crdOpacity);
-crdOpacity.comp.up.style.background = "rgba(255,255,255,1)";
-console.log(crdDisplay.comp.up);
-console.log(crdDisplay.comp.down);
+// crdDisplay.comp.up.src = "images/clubs/clubs-r02.svg";
+// crdDisplay.comp.up.style.visibility = "visible";
+// crdOpacity.comp.up.style.background = "rgba(255,255,255,1)";
 /*----- event listeners -----*/
 
-// Going to need Event Listener for Draw Button
+// Draw button click
+draw.addEventListener("click", function() {
+    drawCard();
+});
+// New game button click
+newGameBtn.addEventListener("click", function() {
+    init();
+    console.log("this also works");
+})
 
-// and New Game Button
 
 /*----- functions -----*/
+init();
 
-// Place Init function to get page ready for start of game. 
+function init() {
+    console.log("this works");
+// reset card counts
+    crd.countComp.innerText = 26;
+    crd.countPlayer.innerText = 26;
+// reset card displays
+    // (computer up)
+    crdDisplay.comp.up.src = "";
+    crdDisplay.comp.up.style.visibility = "hidden";
+    crdOpacity.comp.up.style.background = "rgba(255,255,255,0.25)";
+    // (computer down)
+    crdDisplay.comp.down.src = "images/backs/dinoback.png";
+    crdDisplay.comp.down.style.visibility = "visible";
+    crdOpacity.comp.up.style.background = "rgba(255,255,255,1)";
+    // (player down)
+    crdDisplay.player.down.src = "images/backs/dinoback.png";
+    crdDisplay.player.down.style.visibility = "visible";
+    crdOpacity.player.up.style.background = "rgba(255,255,255,1)";
+    // (player up)
+    crdDisplay.player.up.src = "";
+    crdDisplay.player.up.style.visibility = "hidden";
+    crdOpacity.player.up.style.background = "rgba(255,255,255,0.25)";
+// reset message display
+    display.innerText = "Draw!";
+// shuffle deck and split into two piles for each player and computer
+
+}
+
+
 
 // Place the Render function 
 
