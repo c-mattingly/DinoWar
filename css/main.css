@@ -102,10 +102,11 @@ div img {
     visibility: hidden;
 }
 #imgUpComp, #imgUpPlayer {
-    height: 174px;
+    height: 165px;
     width: 110px;
-    margin-top: -6px;
+    margin-top: -3px;
     margin-left: 0px;
+    margin-bottom: -20px;
 }
 button {
     background-color: black; 
