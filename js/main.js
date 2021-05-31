@@ -17,9 +17,13 @@ const cardsLeft = {
     player: pile.player + discardPile.player,
     comp: pile.comp + discardPile.comp
 };
-const currCard = "";
-
+const currCard = {
+    player: "",
+    comp: ""
+}
 const message = "";
+
+const winner = "";
 
 /*----- cached element references -----*/
 
@@ -72,9 +76,12 @@ init();
 
 function init() {
     console.log("this works");
+// clear respective player piles
+    pile.comp = [];
+    pile.player = [];
 // reset card counts
-    crd.countComp.innerText = 26;
-    crd.countPlayer.innerText = 26;
+    crd.countComp.innerText = cardsLeft.comp;
+    crd.countPlayer.innerText = cardsLeft.player;
 // reset card displays
     // (computer up)
     crdDisplay.comp.up.src = "";
@@ -83,11 +90,11 @@ function init() {
     // (computer down)
     crdDisplay.comp.down.src = "images/backs/dinoback.png";
     crdDisplay.comp.down.style.visibility = "visible";
-    crdOpacity.comp.up.style.background = "rgba(255,255,255,1)";
+    crdOpacity.comp.down.style.background = "rgba(255,255,255,1)";
     // (player down)
     crdDisplay.player.down.src = "images/backs/dinoback.png";
     crdDisplay.player.down.style.visibility = "visible";
-    crdOpacity.player.up.style.background = "rgba(255,255,255,1)";
+    crdOpacity.player.down.style.background = "rgba(255,255,255,1)";
     // (player up)
     crdDisplay.player.up.src = "";
     crdDisplay.player.up.style.visibility = "hidden";
@@ -95,19 +102,57 @@ function init() {
 // reset message display
     display.innerText = "Draw!";
 // shuffle deck and split into two piles for each player and computer
-
+    shuffle(deck);
+    console.log(deck);
 }
 
 
 
-// Place the Render function 
+// render function 
+function render() {
+    // check to see if card has been turned for computer for proper display of card
+    if(crdDisplay.comp.up.src !== "") {
+        crdDisplay.comp.up.style.visibility = "visible";
+        crdOpacity.comp.up.style.background = "rgba(255,255,255,1)";
+    } else {
+        crdDisplay.comp.up.style.visibility = "hidden";
+        crdOpacity.comp.up.style.background = "rgba(255,255,255,0.25)";
+    }
+    // check to see if card has been turned for player for proper display of card
+    if(crdDisplay.player.up.src !== "") {
+        crdDisplay.player.up.style.visibility = "visible";
+        crdOpacity.player.up.style.background = "rgba(255,255,255,1)";
+    } else {
+        crdDisplay.player.up.style.visibility = "hidden";
+        crdOpacity.player.up.style.background = "rgba(255,255,255,0.25)";
+    }
+}
 
-    // Have a shuffle function(Randomization)
+// shuffle the deck and split into two piles
+function shuffle(deck) {
+    deck = deck.sort(() => Math.random() - 0.5)
+    let i = 0
+    while(i !== deck.length) {
+        pile.player.push(deck[i]);
+        pile.comp.push(deck[i+1]);
+        i+=2;
 
-    // Then split up the deck into player and computer piles of 26 cards each. 
+    }
+    console.log(pile.player);
+    console.log(pile.comp);
+}
+// drawCard function that takes 1 card from playerPile and 1 card from compPile
+// and displays them. also compares and displays who won the hand 
+function drawCard() {
+    currCard.player = pile.player[0];
+    currCard.comp = pile.comp[0];
+    console.log(currCard.player);
+    console.log(currCard.comp);
+    compareCard();
+}
+function compareCard() {
 
-// draw function that takes 1 card from playerPile and 1 card from compPile. 
-
+}
 // cardsLeft function to keep an updated display of playerCardsLeft and compCardsLeft
 
 // function to update display with who won each hand (ex: "Computer takes 10 with Ace")
