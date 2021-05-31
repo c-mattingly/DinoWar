@@ -87,14 +87,12 @@ div img {
     margin-top: -6px;
     margin-left: -6px;
 }
-.upsideDwn {
-    transform: scale(-1, -1);
-}
-
 #imgUpComp {
-    visibility: hidden;
+    transform: scale(-1, -1);
+    visibility: visible;
 }
 #imgDownComp {
+    transform: scale(-1, -1);
     visibility: visible;
 }
 #imgDownPlayer {
