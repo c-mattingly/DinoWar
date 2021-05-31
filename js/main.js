@@ -1,5 +1,8 @@
 /*----- constants -----*/
-const deck = ["dA", "dK", "dQ", "dJ", "d10", "d09", "d08", "d07", "d06", "d05", "d04", "d03", "d02", "hA", "hK", "hQ", "hJ", "h10", "h09", "h08", "h07", "h06", "h05", "h04", "h03", "h02", "cA", "cK", "cQ", "cJ", "c10", "c09", "c08", "c07", "c06", "c05", "c04", "c03", "c02", "sA", "sK", "sQ", "sJ", "s10", "s09", "s08", "s07", "s06", "s05", "s04", "s03", "s02"];
+const deck = ["d14", "d13", "d12", "d11", "d10", "d09", "d08", "d07", "d06", "d05", "d04", "d03", "d02", 
+"h14", "h13", "h12", "h11", "h10", "h09", "h08", "h07", "h06", "h05", "h04", "h03", "h02", 
+"c14", "c13", "c12", "c11", "c10", "c09", "c08", "c07", "c06", "c05", "c04", "c03", "c02", 
+"s14", "s13", "s12", "s11", "s10", "s09", "s08", "s07", "s06", "s05", "s04", "s03", "s02"];
 
 /*----- app's state (variables) -----*/
 
@@ -146,6 +149,14 @@ function shuffle(deck) {
 function drawCard() {
     currCard.player = pile.player[0];
     currCard.comp = pile.comp[0];
+    // display computers card
+    crdDisplay.comp.up.src = "./images/cards/" + currCard.comp + ".svg";
+    crdDisplay.comp.up.style.visibility = "visible";
+    crdOpacity.comp.up.style.background = "rgba(255,255,255,1)";
+    // display players card
+    crdDisplay.player.up.src = "./images/cards/" + currCard.player + ".svg";
+    crdDisplay.player.up.style.visibility = "visible";
+    crdOpacity.player.up.style.background = "rgba(255,255,255,1)";
     console.log(currCard.player);
     console.log(currCard.comp);
     compareCard();
