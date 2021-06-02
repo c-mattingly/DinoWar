@@ -181,6 +181,7 @@ function drawCard() {
 }
 // compare cards and place cards in appropriate discard piles
 function compareCard() {
+    // handling the end of game no more cards
     if(currCard.comp === undefined) {
         checkWin();
     } else if(currCard.player === undefined) {
@@ -188,7 +189,6 @@ function compareCard() {
     } else {
         let compareComp = currCard.comp.substr(1);
         let comparePlayer = currCard.player.substr(1);
-
         if(warActive === false) {
             if(compareComp > comparePlayer) {
                 discardPile.comp.push(pile.player[0]);
@@ -197,8 +197,8 @@ function compareCard() {
                 pile.comp.splice(0, 1);
                 display.innerText = "Computer wins hand!";
             } else if(compareComp < comparePlayer) {
-                discardPile.player.push(pile.player[0]);
                 discardPile.player.push(pile.comp[0]);
+                discardPile.player.push(pile.player[0]);
                 pile.player.splice(0, 1);
                 pile.comp.splice(0, 1);
                 display.innerText = "Player wins hand!";
