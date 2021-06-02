@@ -269,8 +269,8 @@ function checkWin() {
         crdDisplay.comp.down.src = "";
         crdDisplay.comp.down.style.visibility = "hidden";
         crdOpacity.comp.down.style.background = "rgba(255,255,255,0.25)";
-        cardsLeft.player = 52;
-        cardsLeft.comp = 0;
+        crd.countComp.innerText = 0;
+        crd.countPlayer.innerText = 52;
         display.innerText = "Player has won DinoWar!";
         draw.removeEventListener("click", drawCard);
     } else if (cardsLeft.player === 0) {
@@ -280,8 +280,8 @@ function checkWin() {
         crdDisplay.player.down.src = "";
         crdDisplay.player.down.style.visibility = "hidden";
         crdOpacity.player.down.style.background = "rgba(255,255,255,0.25)";
-        cardsLeft.comp = 52;
-        cardsLeft.player = 0;
+        crd.countComp.innerText = 52;
+        crd.countPlayer.innerText = 0;
         display.innerText = "Computer has won DinoWar!";
         draw.removeEventListener("click", drawCard);
     }
