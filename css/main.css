@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
   }
-  
+
 body {
     height: 100vh;
     max-width:390px;
@@ -159,7 +159,167 @@ button:hover {
     margin-left: 134px;   
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 930px) {
+    body {
+        height: 100vh;
+        max-width:1368px;
+        margin: 0;
+    }
+    
+    header {
+        background: rgba(0,0,0,0.7);
+        margin: 0;
+        height: 100px;
+    }
+    
+    #dino {
+        display: block;
+        width: 350px;
+        height: 100px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .container {
+        max-width: 1920px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    #displayH1 {
+       text-align: center;
+       font-size: 30px;
+    }
+
+    h3 {
+        background: rgba(0,0,0,0.25);
+        font-size: 25px;
+    }
+
+    .display {
+        order: 1;
+        background: rgba(0,0,0,0.25);
+        display: block;
+        width: 210px;
+        height: 120px;
+        text-align: center;
+        margin-top: 279px;
+        margin-left: 50px;
+        margin-right: 50px;
+        border-radius: 32px;
+    }
+    
+    .crd {
+        height: 269px;
+        width: 172px;
+        border: 2px solid black;
+    }
+
+    #compFaceUp {
+        order: 2;
+        margin-top: 70px;
+        background: rgba(255,255,255,0.25);
+    }
+
+    #compFaceDown {
+        order: 3;
+        margin-top: 70px;
+        margin-left: 70px;
+        margin-right: -200px;
+        background: rgba(255,255,255,1);
+    }
+    .compCardDiv {
+        order: 4;
+        text-align: center;
+        width: 170px;   
+        margin-left: 180px;
+    }
+    
+    #playerFaceDown {
+        order: 5;
+        margin-left: 355px;
+        margin-top: -30px;
+        background: rgba(255,255,255,1)
+    }
+
+    #playerFaceUp {
+        order: 6;
+        margin-left: 70px;
+        margin-top: -30px;
+        background: rgba(255,255,255,0.25)
+    }
+    .playerCardDiv{
+        order: 7;
+        width: 170px;
+        margin-left: 150px;
+        margin-right: 260px;
+    }
+    div img {
+        height: 285px;
+        width: 190px;
+        margin-top: -10px;
+        margin-bottom: -200px;
+        margin-left: -10px;
+    }
+
+    #imgUpComp {
+        transform: scale(-1, -1);
+        visibility: visible;
+    }
+
+    #imgDownComp {
+        transform: scale(-1, -1);
+        visibility: visible;
+    }
+
+    #imgDownPlayer {
+        height: 285px;
+        width: 190px;
+        visibility: visible;
+    }
+
+    #imgUpPlayer {
+        height: 269px;
+        width: 172px;
+        visibility: hidden;
+    }
+
+    #imgUpComp, #imgUpPlayer {
+        height: 269px;
+        width: 172px;
+        margin-top: -3px;
+        margin-left: 0px;
+        margin-bottom: -20px;
+    }
+    
+    .buttonDiv {
+        order: 8;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    #draw {
+       
+        width: 132px;
+        height: 61px;
+        border-radius: 24px;
+        font-size: 40px;
+        margin-left: 480px;
+        margin-top: -65px;   
+    }
+    
+    #new {
+        
+        width: 132px;
+        height: 34px;
+        border-radius: 11px;
+        font-size: 20px;
+        margin-top: 10px;
+        margin-left: 480px;
+    }
+}
+@media only screen and (min-width: 1368px) {
     body {
         height: 100vh;
         max-width:1920px;
