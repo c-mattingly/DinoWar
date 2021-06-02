@@ -27,10 +27,6 @@ const currCard = {
 let war = [];
 let warActive = false;
 
-const message = "";
-
-const winner = "";
-
 /*----- cached element references -----*/
 
 // Cards left counts
@@ -59,27 +55,21 @@ const draw = document.getElementById("draw");
 // New game button
 const newGameBtn = document.getElementById("new");
 
-
-// list of code going to use for visibility of cards within functions.          
-// crdDisplay.comp.up.src = "images/clubs/clubs-r02.svg";
-// crdDisplay.comp.up.style.visibility = "visible";
-// crdOpacity.comp.up.style.background = "rgba(255,255,255,1)";
 /*----- event listeners -----*/
 
 // Draw button click
-draw.addEventListener("click", function() {
-    drawCard();
-});
+draw.addEventListener("click", drawCard);
 // New game button click
 newGameBtn.addEventListener("click", function() {
     init();
 })
 
-
 /*----- functions -----*/
+
 init();
 
 function init() {
+    draw.addEventListener("click", drawCard);
 // clear respective player piles
     pile.comp = [];
     pile.player = [];
@@ -148,7 +138,6 @@ function render() {
     crd.countComp.innerText = cardsLeft.comp;
     crd.countPlayer.innerText = cardsLeft.player;
 }
-
 // shuffle the deck and split into two piles
 function shuffle(deck) {
     deck = deck.sort(() => Math.random() - 0.5)
@@ -157,25 +146,14 @@ function shuffle(deck) {
         pile.player.push(deck[i]);
         pile.comp.push(deck[i+1]);
         i+=2;
-
     }
-    console.log(pile.player);
-    console.log(pile.comp);
 }
 // drawCard function that takes 1 card from playerPile and 1 card from compPile
 // and displays them. also compares and displays who won the hand 
 function drawCard() {
     render();
-    console.log(warActive);
+    checkWin();
     if(warActive === false) {
-    console.log(crd.countPlayer);
-    console.log(crd.countComp);
-    console.log(crd.countPlayer.innerText);
-    console.log(crd.countComp.innerText);
-    console.log(crd.countPlayer.innerHTML);
-    console.log(crd.countComp.innerHTML);
-    console.log(crd.countPlayer.textContent);
-    console.log(crd.countComp.textContent);
         currCard.player = pile.player[0];
         currCard.comp = pile.comp[0];
         // display computers card
@@ -188,7 +166,6 @@ function drawCard() {
         crdOpacity.player.up.style.background = "rgba(255,255,255,1)";
         compareCard();
     } else {
-        console.log(war + " <-this is draw function");
         currCard.player = pile.player[0];
         currCard.comp = pile.comp[0];
         // display computers card
@@ -204,97 +181,109 @@ function drawCard() {
 }
 // compare cards and place cards in appropriate discard piles
 function compareCard() {
-    let compareComp = currCard.comp.substr(1);
-    let comparePlayer = currCard.player.substr(1);
-    if(warActive === false) {
-        if(compareComp > comparePlayer) {
-            discardPile.comp.push(pile.player[0]);
-            discardPile.comp.push(pile.comp[0]);
-            pile.player.splice(0, 1);
-            pile.comp.splice(0, 1);
-            display.innerText = "Computer wins hand!";
-        } else if(compareComp < comparePlayer) {
-            discardPile.player.push(pile.player[0]);
-            discardPile.player.push(pile.comp[0]);
-            pile.player.splice(0, 1);
-            pile.comp.splice(0, 1);
-            display.innerText = "Player wins hand!";
-        } else {
-            startWar();
-        }
+    if(currCard.comp === undefined) {
+        checkWin();
+    } else if(currCard.player === undefined) {
+        checkWin();
     } else {
-        console.log(war + " <--this is compare")
-        if(compareComp > comparePlayer) {
-            console.log(pile.comp);
-            console.log(discardPile.comp);
-            war.push(pile.player[0]);
-            war.push(pile.comp[0]);
-            console.log(discardPile.comp);
-            discardPile.comp = discardPile.comp.concat(war);
-            console.log(war + " <--this is comp winning");
-            console.log(pile.comp);
-            console.log(discardPile.comp);
-            
+        let compareComp = currCard.comp.substr(1);
+        let comparePlayer = currCard.player.substr(1);
 
-            pile.player.splice(0, 1);
-            pile.comp.splice(0, 1);
-            console.log(pile.comp);
-            console.log(discardPile.comp);
-            console.log(cardsLeft.comp);
-            war = [];
-            console.log(war);
-            warActive = false;
-            display.innerText = "Computer wins war!";
-        } else if(compareComp < comparePlayer) {
-            war.push(pile.player[0]);
-            war.push(pile.comp[0]);
-            discardPile.player = discardPile.player.concat(war);
-            console.log(war + " <--this is player winning");
-            console.log(pile.player);
-            console.log(discardPile.player);
-            pile.player.splice(0, 1);
-            pile.comp.splice(0, 1);
-            console.log(pile.player);
-            console.log(discardPile.player);
-            console.log(cardsLeft.player);
-
-            war = [];
-            console.log(war);
-            warActive = false;
-            display.innerText = "Player wins war!";
+        if(warActive === false) {
+            if(compareComp > comparePlayer) {
+                discardPile.comp.push(pile.player[0]);
+                discardPile.comp.push(pile.comp[0]);
+                pile.player.splice(0, 1);
+                pile.comp.splice(0, 1);
+                display.innerText = "Computer wins hand!";
+            } else if(compareComp < comparePlayer) {
+                discardPile.player.push(pile.player[0]);
+                discardPile.player.push(pile.comp[0]);
+                pile.player.splice(0, 1);
+                pile.comp.splice(0, 1);
+                display.innerText = "Player wins hand!";
+            } else {
+                startWar();
+            }
         } else {
-            startWar();
+            if(compareComp > comparePlayer) {
+                war.push(pile.player[0]);
+                war.push(pile.comp[0]);
+                discardPile.comp = discardPile.comp.concat(war);
+                pile.player.splice(0, 1);
+                pile.comp.splice(0, 1);
+                war = [];
+                warActive = false;
+                display.innerText = "Computer wins war!";
+            } else if(compareComp < comparePlayer) {
+                war.push(pile.player[0]);
+                war.push(pile.comp[0]);
+                discardPile.player = discardPile.player.concat(war);
+                pile.player.splice(0, 1);
+                pile.comp.splice(0, 1);
+                war = [];
+                warActive = false;
+                display.innerText = "Player wins war!";
+            } else {
+                startWar();
+            }
         }
     }
 }
 // war function for when there is a tie
 function startWar() {
     if(warActive === false) {
-        console.log("1st war fired");
+        if(pile.player.length < 4) {
+            pile.player = pile.player.concat(discardPile.player);
+            discardPile.player = [];
+        }if(pile.comp.length < 4) {
+            pile.comp = pile.comp.concat(discardPile.comp);
+            discardPile.comp = [];
+        }
         warActive = true;
         war.push(pile.player[0], pile.player[1], pile.player[2], pile.player[3]);
         war.push(pile.comp[0], pile.comp[1], pile.comp[2], pile.comp[3]);
-        console.log(war);
         pile.player.splice(0, 4);
         pile.comp.splice(0, 4);
         display.innerText = "I Declare War!";
     } else {
-        console.log("2nd war fired");
+        if(pile.player.length < 4) {
+            pile.player = pile.player.concat(discardPile.player);
+            discardPile.player = [];
+        }if(pile.comp.length < 4) {
+            pile.comp = pile.comp.concat(discardPile.comp);
+            discardPile.comp = [];
+        }
         war.push(pile.player[0], pile.player[1], pile.player[2], pile.player[3]);
         war.push(pile.comp[0], pile.comp[1], pile.comp[2], pile.comp[3]);
-        console.log(war);
         pile.player.splice(0, 4);
         pile.comp.splice(0, 4);
         display.innerText = "I Declare War Again!";
     }
 }
-
-// function to update display with who won each hand (ex: "Computer takes 10 with Ace")
-
-    // if there is a tie then go into warPhase "I Declare War". 3 cards down 1 card up. then diplay winner of warPhase.
-
-    // function to place discarded cards in proper discardPiles(playerDiscard compDiscard)
-
-    // clear all the cards
-
-// function to determine winning condition (respective cardsLeft counter reaches 0)
+function checkWin() {
+    if(cardsLeft.comp === 0) {
+        crdDisplay.comp.up.src = "";
+        crdDisplay.comp.up.style.visibility = "hidden";
+        crdOpacity.comp.up.style.background = "rgba(255,255,255,0.25)";
+        crdDisplay.comp.down.src = "";
+        crdDisplay.comp.down.style.visibility = "hidden";
+        crdOpacity.comp.down.style.background = "rgba(255,255,255,0.25)";
+        cardsLeft.player = 52;
+        cardsLeft.comp = 0;
+        display.innerText = "Player has won DinoWar!";
+        draw.removeEventListener("click", drawCard);
+    } else if (cardsLeft.player === 0) {
+        crdDisplay.player.up.src = "";
+        crdDisplay.player.up.style.visibility = "hidden";
+        crdOpacity.player.up.style.background = "rgba(255,255,255,0.25)";
+        crdDisplay.player.down.src = "";
+        crdDisplay.player.down.style.visibility = "hidden";
+        crdOpacity.player.down.style.background = "rgba(255,255,255,0.25)";
+        cardsLeft.comp = 52;
+        cardsLeft.player = 0;
+        display.innerText = "Computer has won DinoWar!";
+        draw.removeEventListener("click", drawCard);
+    }
+    
+}
