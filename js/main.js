@@ -75,6 +75,7 @@ function init() {
     discardPile.comp = [];
     discardPile.player = [];
     war = [];
+    warActive = false;
 // reset card displays
     // (computer up)
     crdDisplay.comp.up.src = "";
