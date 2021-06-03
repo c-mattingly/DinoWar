@@ -6,8 +6,8 @@ body {
     height: 100vh;
     max-width:390px;
     margin: 0;
-    background-image: url("../images/background.png");
-    background-color:cadetblue;
+    background-image: url(../images/background.png);
+    background-color:rgb(0, 97, 162);
     color:#BC0C0C;
     text-shadow: 0px 0px 1px black, 0px 0px 1px black, 0px 0px 1px black, 0px 0px 1px black,
     0px 0px 1px black, 0px 0px 1px black;
@@ -128,12 +128,6 @@ button {
     background-color: black; 
     color: #BC0C0C;
     border: 1px solid #555555;
-}
-
-button:hover {
-    background: rgba(0,0,0,0);
-    color: black; 
-    border: 1px solid black;
 }
 
 .buttonDiv {
@@ -298,6 +292,12 @@ button:hover {
         width: 100%;
         justify-content: center;
     }
+
+    button:hover {
+        background: rgba(0,0,0,0);
+        color: black; 
+        border: 1px solid black;
+    }
     
     #draw {
        
@@ -456,6 +456,12 @@ button:hover {
         order: 8;
         width: 100%;
         justify-content: center;
+    }
+
+    button:hover {
+        background: rgba(0,0,0,0);
+        color: black; 
+        border: 1px solid black;
     }
     
     #draw {
