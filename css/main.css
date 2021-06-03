@@ -6,7 +6,7 @@ body {
     height: 100vh;
     max-width:390px;
     margin: 0;
-    background-image: url("/Users/mikemattingly/code/DinoWar/images/background.png");
+    background-image: url("../images/background.png");
     background-color:cadetblue;
     color:#BC0C0C;
     text-shadow: 0px 0px 1px black, 0px 0px 1px black, 0px 0px 1px black, 0px 0px 1px black,
