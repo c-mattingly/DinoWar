@@ -1,4 +1,5 @@
 /*----- constants -----*/
+
 const deck = ["d14", "d13", "d12", "d11", "d10", "d09", "d08", "d07", "d06", "d05", "d04", "d03", "d02", 
 "h14", "h13", "h12", "h11", "h10", "h09", "h08", "h07", "h06", "h05", "h04", "h03", "h02", 
 "c14", "c13", "c12", "c11", "c10", "c09", "c08", "c07", "c06", "c05", "c04", "c03", "c02", 
@@ -60,21 +61,20 @@ const newGameBtn = document.getElementById("new");
 // Draw button click
 draw.addEventListener("click", drawCard);
 // New game button click
-newGameBtn.addEventListener("click", function() {
-    init();
-})
-
+newGameBtn.addEventListener("click", init);
+ 
 /*----- functions -----*/
 
 init();
 
 function init() {
     draw.addEventListener("click", drawCard);
-// clear respective player piles
+// clear respective player piles and war pile
     pile.comp = [];
     pile.player = [];
     discardPile.comp = [];
     discardPile.player = [];
+    war = [];
 // reset card displays
     // (computer up)
     crdDisplay.comp.up.src = "";
@@ -102,8 +102,6 @@ function init() {
     crd.countComp.innerText = cardsLeft.comp;
     crd.countPlayer.innerText = cardsLeft.player;
 }
-
-
 
 // render function 
 function render() {
@@ -284,6 +282,5 @@ function checkWin() {
         crd.countPlayer.innerText = 0;
         display.innerText = "Computer has won DinoWar!";
         draw.removeEventListener("click", drawCard);
-    }
-    
+    }  
 }
