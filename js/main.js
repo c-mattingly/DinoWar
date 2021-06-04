@@ -103,7 +103,6 @@ function init() {
     crd.countComp.innerText = cardsLeft.comp;
     crd.countPlayer.innerText = cardsLeft.player;
 }
-
 // render function 
 function render() {
     // check to see if card has been turned for computer for proper display of card
